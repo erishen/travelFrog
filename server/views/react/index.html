@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>React</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <% if (env === "production") { %>
+    <link rel="stylesheet" href="wildsPAGE/react/index.css?v=<%= version %>" />
+    <% } %>
+</head>
+<body>
+<div id="app"></div>
+
+<script src="wildsPAGE/react/bundle.js?v=<%= version %>" type="text/javascript"></script>
+<% if (env !== "production" && reload === true) { %>
+<script src="reload/reload.js"></script>
+<% } %>
+</body>
+</html>

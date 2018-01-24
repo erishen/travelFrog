@@ -1,0 +1,129 @@
+@import '../../less/reset';
+@import '../../less/common';
+
+.wildskick-video {
+  .reload-wapper {
+    position: relative;
+  }
+
+  .reload-sbg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: @ls-white;
+    text-align: center;
+    z-index: 101;
+    display: none;
+
+    .t1 {
+      position: absolute;
+      top: 48%;
+      left: 0;
+      transform: translateY(-50%);
+      z-index: 109;
+      width: 100%;
+      text-align: center;
+      font-size: @ls-fz15;
+      line-height: 2;
+
+      span{
+        color: @ls-yl;
+      }
+    }
+  }
+
+  .video-content {
+    margin: 0 auto;
+
+    .video-live {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      bottom: 0px;
+
+      &:extend(.ls-flex);
+      &:extend(.ls-column);
+      &:extend(.ls-justify-space-between);
+
+      .player-center {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        width: 100%;
+        height: 100%;
+
+        &:extend(.ls-flex);
+        &:extend(.ls-row);
+        &:extend(.ls-justify-center);
+        &:extend(.ls-align-center);
+
+        .player-button {
+          background-image: url("@{ls-imgurl}ic_play_video.png");
+          background-size: 100%;
+          width: 92px;
+          height: 92px;
+          z-index: 99;
+          display: none;
+        }
+      }
+    }
+  }
+
+  .vjs-matrix {
+    .vjs-big-play-button {
+      border-color: @ls-white;
+      border-radius: 50%;
+      width: 90px;
+      height: 90px;
+    }
+
+    .vjs-big-play-button:before {
+      color: @ls-white;
+      font-size: @ls-fz45;
+      margin-top: 20px;
+    }
+
+    .vjs-play-progress:before {
+      border: 2px solid @ls-white;
+      border-radius: 50%;
+      color: @ls-yl;
+      background-color: @ls-yl;
+    }
+
+    .vjs-control-bar {
+      background-color: transparent;
+    }
+
+    .vjs-slider-bar:before {
+      margin-top: -2px;
+    }
+
+    .vjs-loading-spinner{
+      display:none;
+    }
+
+    .vjs-error-display{
+      display:none!important;
+    }
+  }
+
+  .video-js {
+    object-fit: cover;
+
+    .vjs-poster {
+      object-fit: cover;
+    }
+
+    .vjs-current-time {
+      display: block;
+    }
+    .vjs-duration {
+      display: block;
+    }
+  }
+}
