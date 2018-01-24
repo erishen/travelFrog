@@ -75,7 +75,7 @@ var renderWriteLoop = function(req, res, routeIndex, routeArray, resultArray, ca
 router.get('/', function(req, res) {
     if(!isDev) {
         var resultArray = [];
-        var routeArray = ['inke', 'seniverse', 'react'];
+        var routeArray = ['inke', 'seniverse', 'react', 'crm'];
         renderWriteLoop(req, res, 0, routeArray, resultArray, function(result){
             res.send(result);
         });

@@ -9,7 +9,8 @@ var productionConfig = [{
     entry: {
         inke: './client/wildsPAGE/inke',
         seniverse: './client/wildsPAGE/seniverse',
-        react: './client/wildsPAGE/react'
+        react: './client/wildsPAGE/react',
+        crm: './client/wildsPAGE/crm'
     },
     output: {
         filename: './wildsPAGE/[name]/bundle.js',

@@ -19,3 +19,5 @@
     * 映客视频随机播放: http://localhost:3000/inke?R
     * 映客视频单个播放: http://localhost:3000/inke?U=..&L=..
     * 天气按城市显示:   http://localhost:3000/seniverse?L=..
+    * React/Redux 测试页面: http://localhost:3000/react
+    
