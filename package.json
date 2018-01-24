@@ -1,10 +1,10 @@
 {
-  "name": "wildsKick",
+  "name": "travelFrog",
   "version": "1.0.0",
   "description": "A workflow with full live reload for webpack&express application.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/erishen/wildsKick.git"
+    "url": "https://github.com/erishen/travelFrog.git"
   },
   "author": "Erishen Sun",
   "main": "app.js",
