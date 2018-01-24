@@ -1,6 +1,3 @@
-/**
- * Created by lei_sun on 2017/11/6.
- */
 import React, { Component } from 'react';
 import rootReducer from './reducers'
 import * as actions from './actions';
@@ -34,7 +31,7 @@ export default class TestPage extends Component<{}> {
 
         return (
             <div className="test">
-                <div>{pageNum}</div>
+                <div>Home-{pageNum}</div>
                 <div className="row">
                     <button onClick={()=>store.dispatch(actions.addPageNum())}> + </button>
                     <button onClick={()=>store.dispatch(actions.subtractPageNum())}> - </button>
