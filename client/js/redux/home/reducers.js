@@ -1,24 +1,20 @@
 import { combineReducers } from 'redux';
 
 import {
-    INIT_PAGE, ADD_PAGE_NUM, SUBTRACT_PAGE_NUM
+    INIT_PAGE
 } from './actions';
 
-const pageNum = (state = 1, action) => {
+const user = (state = {}, action) => {
     switch (action.type) {
         case INIT_PAGE:
-            return 1;
-        case ADD_PAGE_NUM:
-            return state + 1;
-        case SUBTRACT_PAGE_NUM:
-            return state - 1;
+            return {};
         default:
             return state
     }
 };
 
 const rootReducer = combineReducers({
-    pageNum
+    user
 });
 
 export default rootReducer;

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import rootReducer from './reducers'
 import * as actions from './actions';
-import createStoreWithMiddleware from '../store';
+import createStoreWithMiddleware from '../common/store';
 
 const store = createStoreWithMiddleware(rootReducer);
 
-export default class TestPage extends Component<{}> {
+export default class Home extends Component<{}> {
     constructor(props){
         super(props);
         this.state = store.getState();
@@ -27,15 +27,11 @@ export default class TestPage extends Component<{}> {
     }
 
     render() {
-        let { pageNum } = this.state;
+        let { user } = this.state;
 
         return (
-            <div className="test">
-                <div>Home-{pageNum}</div>
-                <div className="row">
-                    <button onClick={()=>store.dispatch(actions.addPageNum())}> + </button>
-                    <button onClick={()=>store.dispatch(actions.subtractPageNum())}> - </button>
-                </div>
+            <div className="home">
+                <div>Home</div>
             </div>
         );
     }

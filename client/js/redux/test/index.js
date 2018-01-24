@@ -4,11 +4,11 @@
 import React, { Component } from 'react';
 import rootReducer from './reducers'
 import * as actions from './actions';
-import createStoreWithMiddleware from '../store';
+import createStoreWithMiddleware from '../common/store';
 
 const store = createStoreWithMiddleware(rootReducer);
 
-export default class TestPage extends Component<{}> {
+export default class Test extends Component<{}> {
     constructor(props){
         super(props);
         this.state = store.getState();
