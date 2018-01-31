@@ -31,7 +31,12 @@ export default class Home extends Component<{}> {
 
         return (
             <div className="home">
-                <div>Home</div>
+                <div className="top">
+                    <div className="item">登录</div>
+                </div>
+                <div className="content">
+
+                </div>
             </div>
         );
     }
