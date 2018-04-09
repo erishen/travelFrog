@@ -14,10 +14,8 @@ video.init = function(id, coverImageUrl, playerUrl){
 
     var screenWidth = $(window).width();
     var screenHeight = $(window).height();
+    screenHeight += 45;
     console.log('init', screenWidth, screenHeight);
-
-    if(util.isWeixinBrowser())
-        screenHeight += 45;
 
     $('.video-wrap').css({ 'width': screenWidth, 'height': screenHeight });
     $('.video-js').css({ 'width': screenWidth, 'height': screenHeight });
