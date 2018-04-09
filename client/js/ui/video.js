@@ -19,9 +19,8 @@ video.init = function(id, coverImageUrl, playerUrl){
     $('.video-js').css({ 'width': screenWidth, 'height': screenHeight });
     $('.vjs-tech').css({ 'width': screenWidth, 'height': screenHeight });
 
-    var player = self.neplayerSetting(id, playerUrl);
+    var player = self.videoSetting(id, playerUrl);
     self.eventListener(player);
-
     self.setCoverImageUrl(coverImageUrl);
 
     $('.wildskick-video').show();
@@ -61,12 +60,12 @@ video.setPlayerUrl = function(player, playerUrl) {
         }
 
         if (type != '' && player) {
-            player.setDataSource({type: type, src: playerUrl});
+            player.src({ type: type, src: playerUrl, withCredentials: true });
         }
     }
 };
-video.neplayerSetting = function(id, playerUrl){
-    console.log('neplayerSetting', id, playerUrl);
+video.videoSetting = function(id, playerUrl){
+    console.log('videoSetting', id, playerUrl);
     var self = this;
     // 播放器设置参数
     var playerOptions = {
@@ -83,14 +82,19 @@ video.neplayerSetting = function(id, playerUrl){
             currentTimeDisplay: true,
             progressControl: true,
             durationDisplay: true
+        },
+        html5: {
+            hls: {
+                withCredentials: true
+            }
         }
     };
 
-    // 使用 neplayer 视频播放器初始化
+    // 使用 videojs 视频播放器初始化
     var player = null;
-    if (neplayer)
+    if (videojs)
     {
-        player = neplayer(id, playerOptions, function () {
+        player = videojs(id, playerOptions, function () {
             $('.vjs-play-control').css('display', 'none');
             $('.vjs-volume-menu-button').css('display', 'none');
             $('.vjs-fullscreen-control').css('display', 'none');
@@ -100,15 +104,21 @@ video.neplayerSetting = function(id, playerUrl){
         self.setPlayerUrl(player, playerUrl);
 
         player.on('loadstart', function () {
-            console.log('loadstart', player.getVideoWidth(), player.getVideoHeight());
+            console.log('loadstart');
+
+            if(!playBtnFlag)
+            {
+                $('.js_player').show();
+                playBtnFlag = true;
+            }
         });
 
         player.on('progress', function () {
-            //console.log('progress', player.getVideoWidth(), player.getVideoHeight());
+            //console.log('progress');
         });
 
         player.on('canplay', function () {
-            //console.log('canplay', player.getVideoWidth(), player.getVideoHeight());
+            //console.log('canplay');
 
             if(!playBtnFlag)
             {
@@ -128,7 +138,7 @@ video.neplayerSetting = function(id, playerUrl){
         });
 
         player.on('error', function () {
-            //console.log('error');
+            console.log('error');
             $(".reload-sbg").css("height", $(window).height());
             $(".reload-sbg").show();
             $('.js_player').hide();

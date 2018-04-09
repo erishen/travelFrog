@@ -105,7 +105,7 @@ inke.logUserAction = function(parameters, player){
     var currentState = 'start';
 
     if(player){
-        player.onPlayState(3, function(){
+        player.on('ended', function(){
             currentState = 'ended';
             console.log('player_ended');
             pauseVideo();
