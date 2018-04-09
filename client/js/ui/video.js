@@ -3,6 +3,7 @@
  */
 var $ = require('../lib/jquery-3.2.1.min');
 var _ = require('../lib/lodash.min');
+var util = require('../helper/util');
 
 var playBtnFlag = false;
 var playClickFlag = false;
@@ -14,6 +15,9 @@ video.init = function(id, coverImageUrl, playerUrl){
     var screenWidth = $(window).width();
     var screenHeight = $(window).height();
     console.log('init', screenWidth, screenHeight);
+
+    if(util.isWeixinBrowser())
+        screenHeight += 45;
 
     $('.video-wrap').css({ 'width': screenWidth, 'height': screenHeight });
     $('.video-js').css({ 'width': screenWidth, 'height': screenHeight });
@@ -31,6 +35,8 @@ video.setCoverImageUrl = function(coverImageUrl){
     {
         $('.vjs-poster').css({
             'background-image': 'url(' + coverImageUrl + ')',
+            'background-size': 'cover',
+            'background-repeat': 'no-repeat',
             'display': 'block'
         });
         $('.vjs-poster').removeClass('vjs-hidden');
@@ -100,8 +106,11 @@ video.videoSetting = function(id, playerUrl){
             $('.vjs-fullscreen-control').css('display', 'none');
             $('.vjs-big-play-button').css('display', 'none');
         });
+        player.addClass('vjs-matrix');
 
         self.setPlayerUrl(player, playerUrl);
+
+        $('.js_player').show();
 
         player.on('loadstart', function () {
             console.log('loadstart');
@@ -143,21 +152,9 @@ video.videoSetting = function(id, playerUrl){
             $(".reload-sbg").show();
             $('.js_player').hide();
         });
-
-        self.videojsSetting(id);
     }
 
     return player;
-};
-video.videojsSetting = function(id){
-    // 使用 videojs 设置 Video 样式
-    var playerVideo = null;
-    if (videojs)
-    {
-        playerVideo = videojs(id);
-        playerVideo.addClass('vjs-matrix');
-    }
-    return playerVideo;
 };
 video.play = function(player){
     var self = this;

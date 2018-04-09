@@ -264,4 +264,8 @@ util.trim = function (str) {
     console.log('trim', str);
     return str.replace(/^\s*|\s*$/g, '');
 };
+util.isWeixinBrowser = function(){
+    var type = /micromessenger/.test(window.navigator.userAgent.toLowerCase());
+    return type;
+};
 module.exports = util;
