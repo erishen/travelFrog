@@ -5,4 +5,5 @@ module.exports = function (app) {
     app.use('/static', require('./static'));
     app.use('/react', require('./react'));
     app.use('/crm', require('./crm'));
+    app.use('/super80', require('./super80'));
 };

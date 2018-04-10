@@ -9,7 +9,8 @@ var devConfig = {
         inke: ['./client/wildsPAGE/inke', hotMiddlewareScript],
         seniverse: ['./client/wildsPAGE/seniverse', hotMiddlewareScript],
         react: ['./client/wildsPAGE/react', hotMiddlewareScript],
-        crm: ['./client/wildsPAGE/crm', hotMiddlewareScript]
+        crm: ['./client/wildsPAGE/crm', hotMiddlewareScript],
+        super80: ['./client/wildsPAGE/super80', hotMiddlewareScript]
     },
     output: {
         filename: './wildsPAGE/[name]/bundle.js',
