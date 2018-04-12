@@ -31,12 +31,36 @@ var appendItems = function(searchTxts, searchIndex, flag){
 
     var mouseoverItem = function(event){
         var itemId = event.currentTarget.id;
+        console.log('mouseoverItem', itemId);
         $('#' + itemId + ' .item-del-btn').show();
     };
 
     var mouseoutItem = function(event){
         var itemId = event.currentTarget.id;
+        console.log('mouseoutItem', itemId);
         $('#' + itemId + ' .item-del-btn').hide();
+    };
+
+    var touchTimeout = null;
+    var touchstartItem = function(event){
+        event.stopPropagation();
+        var itemId = event.currentTarget.id;
+        var touchEvent = event;
+        console.log('touchstartItem', itemId);
+        touchTimeout = setTimeout(function(){
+            mouseoverItem(touchEvent);
+        }, 1000);
+    };
+
+    var touchendItem = function(event){
+        event.stopPropagation();
+        var itemId = event.currentTarget.id;
+        console.log('touchendItem', itemId);
+        if(touchTimeout != null)
+        {
+            clearTimeout(touchTimeout);
+            touchTimeout = null;
+        }
     };
 
     var doDel = function(event){
@@ -58,12 +82,24 @@ var appendItems = function(searchTxts, searchIndex, flag){
         $('.js_item').on('mouseover', mouseoverItem);
         $('.js_item').on('mouseout', mouseoutItem);
         $('.js_itemDelBtn').on('click', doDel);
+
+        $('.js_item').on('touchstart', touchstartItem);
+        $('.js_item').on('touchend', touchendItem);
     }
     else {
         $('#item_' + searchIndex).on('mouseover', mouseoverItem);
         $('#item_' + searchIndex).on('mouseout', mouseoutItem);
         $('#item_' + searchIndex + ' .js_itemDelBtn').on('click', doDel);
+
+        $('#item_' + searchIndex).on('touchstart', touchstartItem);
+        $('#item_' + searchIndex).on('touchend', touchendItem);
     }
+
+    $('.js_center').on('touchstart', function(){
+        event.stopPropagation();
+        console.log('centerTouchstart');
+        $('.item-del-btn').hide();
+    });
 };
 
 var doSearch = function(){
